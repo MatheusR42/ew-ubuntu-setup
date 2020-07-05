@@ -132,5 +132,22 @@ sudo apt update && sudo apt install yarn -y
 echo 'installing Gazebo with ROS Melodic'
 # Ubuntu 18
 # source <(curl -s https://raw.githubusercontent.com/PX4/Devguide/v1.9.0/build_scripts/ubuntu_sim_ros_melodic.sh)
+
+sudo apt-get install ros-noetic-geographic-msgs -y
+sudo apt-get install python3-pip -y
+pip3 install future
+pip3 install osrf-pycommon
+pip3 install lxml
+
+pip3 install --user packaging
+pip3 install --user toml
+pip3 install --user jinja2
+
+sudo apt-get install libgeographic-dev -y
+sudo apt-get install geographiclib-tools -y
+sudo apt install libgstreamer1.0-dev -y
+sudo apt install gstreamer1.0-plugins-good -y
+sudo apt install gstreamer1.0-plugins-bad -y
+sudo apt install gstreamer1.0-plugins-ugly -y
 source <(curl -s https://raw.githubusercontent.com/PX4/Devguide/636ed2df4a509e9fa19ecc059520728edd9c6c4c/build_scripts/ubuntu_sim_ros_noetic.sh)
 
