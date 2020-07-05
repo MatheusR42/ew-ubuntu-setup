@@ -124,10 +124,17 @@ sudo snap install --classic heroku
 echo 'installing VTEXIO'
 npm i -g vtex
 
+
 echo 'installing yarn'
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update && sudo apt install yarn -y
+
+echo 'installing simplescreenrecorder'
+sudo apt-get install simplescreenrecorder
+
+echo 'installing kdenlive'
+sudo snap install kdenlive
 
 echo 'installing Gazebo with ROS Melodic'
 # Ubuntu 18
