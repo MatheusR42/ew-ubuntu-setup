@@ -130,4 +130,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt update && sudo apt install yarn -y
 
 echo 'installing Gazebo with ROS Melodic'
-source <(curl -s https://raw.githubusercontent.com/PX4/Devguide/v1.9.0/build_scripts/ubuntu_sim_ros_melodic.sh)
+# Ubuntu 18
+# source <(curl -s https://raw.githubusercontent.com/PX4/Devguide/v1.9.0/build_scripts/ubuntu_sim_ros_melodic.sh)
+source <(curl -s https://raw.githubusercontent.com/PX4/Devguide/636ed2df4a509e9fa19ecc059520728edd9c6c4c/build_scripts/ubuntu_sim_ros_noetic.sh)
+
