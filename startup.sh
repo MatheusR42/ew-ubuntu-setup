@@ -1,3 +1,4 @@
+ 
 sudo apt-get update
 
 echo 'installing curl' 
@@ -18,17 +19,11 @@ read git_config_user_email
 git config --global user.email $git_config_user_email
 clear
 
-echo 'installing zsh'
-sudo apt-get install zsh -y
-sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-chsh -s /bin/zsh
-
 echo 'installing tool to handle clipboard via CLI'
 sudo apt-get install xclip -y
 
 export alias pbcopy='xclip -selection clipboard'
 export alias pbpaste='xclip -selection clipboard -o'
-source ~/.zshrc
 
 echo 'installing code'
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -39,15 +34,10 @@ sudo apt-get update
 sudo apt-get install code -y # or code-insiders
 
 echo 'installing extensions'
-code --install-extension dracula-theme.theme-dracula
-code --install-extension editorconfig.editorconfig
-code --install-extension prisma.vscode-graphql
-code --install-extension oderwat.indent-rainbow
-code --install-extension esbenp.prettier-vscode
-code --install-extension ms-vsliveshare.vsliveshare
+code --install-extension Shan.code-settings-sync
 
-echo 'setup settings.json'
-wget  -O ~/.config/Code/User/settings.json "https://gist.githubusercontent.com/MatheusR42/16f944a21d27d314e4288219d87e046b/raw/vs-code-settings.json"
+echo 'installing fonts-firacode'
+sudo apt install fonts-firacode -y
 
 echo 'installing spotify' 
 snap install spotify
@@ -57,42 +47,14 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 echo 'installing nvm' 
-sh -c "$(curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash)"
+sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash)"
 
-export NVM_DIR="$HOME/.nvm" && (
-git clone https://github.com/creationix/nvm.git "$NVM_DIR"
-cd "$NVM_DIR"
-git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
-) && \. "$NVM_DIR/nvm.sh"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-source ~/.zshrc
+source ~/.bashrc
 nvm --version
 nvm install 12
 nvm alias default 12
 node --version
 npm --version
-
-echo 'installing autosuggestions' 
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
-source ~/.zshrc
-
-echo 'installing theme'
-sudo apt install fonts-firacode -y
-wget -O ~/.oh-my-zsh/themes/node.zsh-theme https://raw.githubusercontent.com/skuridin/oh-my-zsh-node-theme/master/node.zsh-theme 
-sed -i 's/.*ZSH_THEME=.*/ZSH_THEME="node"/g' ~/.zshrc
-
-echo 'installing meet franz' 
-wget https://github.com/meetfranz/franz/releases/download/v5.1.0/franz_5.1.0_amd64.deb -O franz.deb
-sudo dpkg -i franz.debchristian-kohler.path-intellisense
-sudo apt-get install -y -f 
-
-echo 'installing terminator'
-sudo apt-get update
-sudo apt-get install terminator -y
 
 echo 'installing docker' 
 sudo apt-get remove docker docker-engine docker.io
@@ -139,26 +101,4 @@ echo 'installing audacity'
 sudo add-apt-repository ppa:ubuntuhandbook1/audacity
 sudo apt-get update
 sudo apt-get install audacity -y
-
-echo 'installing Gazebo with ROS Melodic'
-# Ubuntu 18
-# source <(curl -s https://raw.githubusercontent.com/PX4/Devguide/v1.9.0/build_scripts/ubuntu_sim_ros_melodic.sh)
-
-sudo apt-get install ros-noetic-geographic-msgs -y
-sudo apt-get install python3-pip -y
-pip3 install future
-pip3 install osrf-pycommon
-pip3 install lxml
-
-pip3 install --user packaging
-pip3 install --user toml
-pip3 install --user jinja2
-
-sudo apt-get install libgeographic-dev -y
-sudo apt-get install geographiclib-tools -y
-sudo apt install libgstreamer1.0-dev -y
-sudo apt install gstreamer1.0-plugins-good -y
-sudo apt install gstreamer1.0-plugins-bad -y
-sudo apt install gstreamer1.0-plugins-ugly -y
-source <(curl -s https://raw.githubusercontent.com/PX4/Devguide/636ed2df4a509e9fa19ecc059520728edd9c6c4c/build_scripts/ubuntu_sim_ros_noetic.sh)
 
