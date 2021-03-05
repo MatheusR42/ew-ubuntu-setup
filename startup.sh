@@ -83,13 +83,14 @@ sudo snap install discord --classic
 echo 'installing heroku'
 sudo snap install --classic heroku
 
-echo 'installing VTEXIO'
-npm i -g vtex
-
 echo 'installing yarn'
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update && sudo apt install yarn -y
+
+echo 'installing VTEXIO'
+yarn global add vtex
+
 
 echo 'installing simplescreenrecorder'
 sudo apt-get install simplescreenrecorder -y
