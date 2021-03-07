@@ -1,4 +1,3 @@
- 
 sudo apt-get update
 
 echo 'installing curl' 
@@ -39,20 +38,24 @@ code --install-extension Shan.code-settings-sync
 echo 'installing fonts-firacode'
 sudo apt install fonts-firacode -y
 
-echo 'installing spotify' 
-snap install spotify
+echo 'installing brave'
+sudo apt install apt-transport-https gnupg -y
+curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt update -y
+sudo apt install brave-browser -y 
 
 echo 'installing chrome' 
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 echo 'installing nvm' 
-sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash)"
+sh -c "$(curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash)"
 
 source ~/.bashrc
 nvm --version
-nvm install 12
-nvm alias default 12
+nvm install 14
+nvm alias default 14
 node --version
 npm --version
 
@@ -77,20 +80,14 @@ sudo apt install redshift
 echo 'installing postman'
 sudo snap install postman
 
-echo 'installing discord'
-sudo snap install discord --classic
-
-echo 'installing heroku'
-sudo snap install --classic heroku
-
 echo 'installing yarn'
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update && sudo apt install yarn -y
+echo 'export PATH="$PATH:$(yarn global bin)"' >> ~/.bashrc
 
 echo 'installing VTEXIO'
 yarn global add vtex
-
 
 echo 'installing simplescreenrecorder'
 sudo apt-get install simplescreenrecorder -y
@@ -103,10 +100,11 @@ sudo add-apt-repository ppa:ubuntuhandbook1/audacity
 sudo apt-get update
 sudo apt-get install audacity -y
 
-echo 'installing brave'
-sudo apt install apt-transport-https gnupg -y
-curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
-echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt update -y
-sudo apt install brave-browser -y
+echo 'installing discord'
+sudo snap install discord --classic
 
+echo 'installing heroku'
+sudo snap install --classic heroku
+
+echo 'installing spotify' 
+snap install spotify
